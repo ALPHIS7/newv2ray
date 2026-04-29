@@ -1,6 +1,6 @@
 
 {
-  "_comment": "this is code for me"
+  "_comment": "this is code for me",
   "name": "vercel-xhttp-relay",
   "version": "1.0.0",
   "description": "Edge-runtime XHTTP relay for Xray/V2Ray on Vercel",
