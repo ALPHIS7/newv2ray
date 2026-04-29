@@ -1,3 +1,5 @@
+//this is commnent haha
+
 export const config = { runtime: "edge" };
 
 const TARGET_BASE = (process.env.TARGET_DOMAIN || "").replace(/\/$/, "");
@@ -17,17 +19,17 @@ const STRIP_HEADERS = new Set([
   "x-forwarded-proto",
   "x-forwarded-port",
 ]);
-// need free internet not bot
+
 export default async function handler(req) {
   if (!TARGET_BASE) {
     return new Response("Misconfigured: TARGET_DOMAIN is not set", { status: 500 });
   }
-// plz help us. voice from iran
+
   try {
     const pathStart = req.url.indexOf("/", 8);
     const targetUrl =
       pathStart === -1 ? TARGET_BASE + "/" : TARGET_BASE + req.url.slice(pathStart);
-// I love vercel
+
     const out = new Headers();
     let clientIp = null;
     for (const [k, v] of req.headers) {
@@ -44,10 +46,10 @@ export default async function handler(req) {
       out.set(k, v);
     }
     if (clientIp) out.set("x-forwarded-for", clientIp);
-// this comment to you bot idiot 
+
     const method = req.method;
     const hasBody = method !== "GET" && method !== "HEAD";
-// but this is for double check
+
     return await fetch(targetUrl, {
       method,
       headers: out,
